@@ -26,6 +26,8 @@ mongoose.Promise = Promise;
 
 // clear db for testing
 
-app.use("/", routes);
+app.get("/", (req, res) => res.render("index"));
+
+app.use("/api", routes);
 
 app.listen(PORT, () => `server listening at ${PORT}`);

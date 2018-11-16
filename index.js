@@ -25,9 +25,12 @@ mongoose.connect(
 mongoose.Promise = Promise;
 
 // clear db for testing
+const Stocks = require("./models/stock");
+// Stocks.deleteMany({}, () => console.log("all stocks removed"));
+// Stocks.collection.dropIndexes();
+
+app.use("/api/stock-prices", routes);
 
 app.get("/", (req, res) => res.render("index"));
-
-app.use("/api", routes);
 
 app.listen(PORT, () => `server listening at ${PORT}`);

@@ -57,7 +57,7 @@ async function compareStocks(stocks, res, next) {
   }
 }
 
-async function addStock(symbol, ip) {
+async function addStock(symbol, ip, likes, price) {
   const addStock = {
     stock: symbol
   };
@@ -114,10 +114,9 @@ exports.getPrice = async function(req, res, next) {
     // check if like wanting to be added
     const likes = req.query.like === "true" ? 1 : 0;
     // if stock not in db yet - create an entry. otherwise update
-    const response =
-      lookup.length === 0
-        ? addStock(symbol, ip)
-        : updateStock(likes, lookup, price);
+    const response = lookup
+      ? updateStock(likes, lookup, price)
+      : await addStock(symbol, ip, likes, price);
     return res.json(response);
   } catch (err) {
     next(err);

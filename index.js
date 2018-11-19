@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const cors = require("cors");
 const PORT = process.env.PORT || 8080;
-
+// DB = mongodb://glyn:UPubbfH40VHn@ds051007.mlab.com:51007/stock-prices
 const routes = require("./routes");
 
 app.use(helmet());
@@ -25,7 +25,7 @@ mongoose.connect(
 mongoose.Promise = Promise;
 
 // clear db for testing
-const Stocks = require("./models/stock");
+// const Stocks = require("./models/stock");
 // Stocks.deleteMany({}, () => console.log("all stocks removed"));
 // Stocks.collection.dropIndexes();
 
